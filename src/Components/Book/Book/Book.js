@@ -31,7 +31,7 @@ const [showPaymentBtn,setShowPaymentBTn]=useState(false)
             "status": "pending",
             "paymentId": paymentId
         }
-        fetch("http://localhost:5000/addOrder", {
+        fetch("https://morning-thicket-61908.herokuapp.com/addOrder", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/Json'

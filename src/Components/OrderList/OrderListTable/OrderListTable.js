@@ -27,7 +27,7 @@ const OrderListTable = ({ order }) => {
 
 
 
-        fetch(`http://localhost:5000/update/${productKey}`, {
+        fetch(`https://morning-thicket-61908.herokuapp.com/update/${productKey}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(eventData)

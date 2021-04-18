@@ -17,7 +17,7 @@ const Review = () => {
 
     console.log("review", review);
     const handleReview = () => {
-        fetch('http://localhost:5000/addReview', {
+        fetch('https://morning-thicket-61908.herokuapp.com/addReview', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/Json'

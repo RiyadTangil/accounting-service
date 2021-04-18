@@ -9,7 +9,7 @@ import aliza from '../../../images/aliza.png';
 const Testimonials = () => {
     const [testimonialData, setTestimonialData] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/reviews")
+        fetch("https://morning-thicket-61908.herokuapp.com/reviews")
             .then(res => res.json())
             .then(data => setTestimonialData(data))
     }, [])
