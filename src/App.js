@@ -53,7 +53,7 @@ function App() {
               <AddService></AddService>
             </Route>
             <Route path="/dashboard">
-              <AddAdmin></AddAdmin>
+      <Dashboard></Dashboard>
             </Route>
             <Route path="/bookList">
               <BookList></BookList>

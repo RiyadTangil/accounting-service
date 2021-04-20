@@ -34,7 +34,7 @@ const AddService = () => {
         console.log("formData", formData);
 
 
-        fetch('http://localhost:5000/addService', {
+        fetch('https://morning-thicket-61908.herokuapp.com/addService', {
             method: 'POST',
             body: formData
         })

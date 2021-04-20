@@ -11,7 +11,7 @@ const ManageService = () => {
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/service")
+        fetch("https://morning-thicket-61908.herokuapp.com/service")
             .then(res => res.json())
             .then(data => setServiceList(data))
     }, [])

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const MangesServiceDetails = ({ service }) => {
 
     const handleDelete = (event, id) => {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://morning-thicket-61908.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

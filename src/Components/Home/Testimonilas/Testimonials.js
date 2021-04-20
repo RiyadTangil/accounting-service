@@ -9,12 +9,12 @@ import aliza from '../../../images/aliza.png';
 const Testimonials = () => {
     const [testimonialData, setTestimonialData] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/reviews")
+        fetch("https://morning-thicket-61908.herokuapp.com/reviews")
             .then(res => res.json())
             .then(data => setTestimonialData(data))
     }, [])
     return (
-        <section style={{height:"500px"}}  className="testimonials  my-5 py-5">
+        <section   className="testimonials  my-5 py-5">
             <div  className="container">
                 <div className="section-header text-center">
                     <h5 style={{color:"#DAAD86"}} className="text-uppercase">Testimonial</h5>
