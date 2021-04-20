@@ -4,7 +4,7 @@ import SideBar from '../Dashboard/SideBar/SIdeBar';
 const AddAdmin = () => {
     const [admin ,setAdmin]=useState(null)
     const handleAdmin=()=>{
-        fetch("https://morning-thicket-61908.herokuapp.com/addAdmin", {
+        fetch("http://localhost:5000/addAdmin", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/Json'

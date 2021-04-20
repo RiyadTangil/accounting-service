@@ -12,6 +12,7 @@ const PaymentProcess = ({handlePayment}) => {
 
    
     return (
+        
         <div className="container">
          
             <Elements stripe={stripePromise}>

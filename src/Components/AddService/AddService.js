@@ -16,12 +16,12 @@ const AddService = () => {
         const newInfo = { ...info };
         newInfo[e.target.name] = e.target.value;
         setInfo(newInfo);
-      
+
     }
 
     const handleFileChange = (e) => {
         const newFile = e.target.files[0];
-      
+
         setFile(newFile);
     }
 
@@ -31,10 +31,10 @@ const AddService = () => {
         formData.append('name', info.name);
         formData.append('description', info.description);
         formData.append('price', info.price);
-        console.log("formData",formData);
+        console.log("formData", formData);
 
 
-        fetch('https://morning-thicket-61908.herokuapp.com/addService', {
+        fetch('http://localhost:5000/addService', {
             method: 'POST',
             body: formData
         })
@@ -60,35 +60,36 @@ const AddService = () => {
                 <div className="col-md-10 col-sm-12 col-12">
                     <div className="p-5">
                         <h5 className="text-brand">Add a Service</h5>
-                        {/* <form onSubmit={handleSubmit}> */}
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                        <div class="row g-3">
-                            <div class="col">
-                                <label htmlFor="exampleInputEmail1">Service Title</label>
-                                <input type="text" name="name" onBlur={handleBlur} class="form-control" placeholder="First name" aria-label="First name"></input>
+                        <form onSubmit={onSubmit}>
+                        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+                            <div class="row g-3">
+                                <div class="col">
+                                    <label htmlFor="exampleInputEmail1">Service Title</label>
+                                    <input type="text" name="name" onBlur={handleBlur} class="form-control" placeholder="First name" aria-label="First name"></input>
+                                </div>
+                                <div class="col">
+                                    <label htmlFor="exampleInputEmail1">Service img</label>
+                                    <input type="file" name="img" onChange={handleFileChange} class="form-control" placeholder="Last name" aria-label="Last name"></input>
+                                </div>
                             </div>
-                            <div class="col">
-                                <label htmlFor="exampleInputEmail1">Service img</label>
-                                <input type="file" name="img" onChange={handleFileChange} class="form-control" placeholder="Last name" aria-label="Last name"></input>
+                            <div class="row mt-4 g-3">
+                                <div class="col form-group">
+                                    <label htmlFor="exampleInputEmail1">Service description</label>
+                                    <input type="text" name="description" onBlur={handleBlur} class="form-control" placeholder="Service details" aria-label="First name"></input>
+                                </div>
+                                <div class="col">
+                                    <label htmlFor="exampleInputEmail1">Service Price</label>
+                                    <input type="number" onBlur={handleBlur} name="price" class="form-control" placeholder="Last name" aria-label="Last name"></input>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="row mt-4 g-3">
-                            <div class="col form-group">
-                                <label htmlFor="exampleInputEmail1">Service description</label>
-                                <input type="text" name="description" onBlur={handleBlur} class="form-control" placeholder="Service details" aria-label="First name"></input>
+                            <div class="col-12 d-flex justify-content-end mt-2">
+                                < button type="submit"  data-bs-target="#staticBackdrop" className="btn btn-primary">Submit</button>
                             </div>
-                            <div class="col">
-                            <label htmlFor="exampleInputEmail1">Service Price</label>
-                                <input type="number" onBlur={handleBlur} name="price" class="form-control" placeholder="Last name" aria-label="Last name"></input>
-                            </div>
-                           
-                        </div>
-                        <div class="col-12 d-flex justify-content-end mt-2">
-                           < button type="submit" className="btn btn-primary">Submit</button>
-                           </div>
                         </form>
+
                     </div>
-                   
+
                 </div>
             </div>
         </section>

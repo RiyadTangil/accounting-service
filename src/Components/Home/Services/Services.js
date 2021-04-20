@@ -27,7 +27,7 @@ const serviceData = [
 const Services = () => {
     const[ serviceCollection,setServiceCollection]=useState([])
     useEffect(() => {
-        fetch("https://morning-thicket-61908.herokuapp.com/service")
+        fetch("http://localhost:5000/service")
             .then(res => res.json())
             .then(data => setServiceCollection(data))
     }, [])
@@ -36,13 +36,13 @@ const Services = () => {
         addToDatabaseCart(id)
     }
     return (
-        <section style={{ backgroundColor: "#DAAD86"}} className="service-container">
-            <div className="text-center">
-                <h5 style={{ color: '#DAAD86' }}>OUR SERVICES</h5>
+        <section style={{ backgroundColor: "#DAAD86" }} className="service-container">
+            <div className="text-center pt-5">
+                <h5 style={{ color: 'white' }}>OUR SERVICES</h5>
                 <h2>Services We Provide </h2>
             </div>
             <div className="d-flex justify-content-center  align-items-center">
-                <div className="w-75 row mt-5 pt-5">
+                <div className="w-75 row mt-5 ">
                     {
                         serviceCollection.map(service => <ServiceDetails addTOLocalStorage={addTOLocalStorage} service={service} key={service.name}></ServiceDetails>)
                     }

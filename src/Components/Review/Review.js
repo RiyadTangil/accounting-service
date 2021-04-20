@@ -5,19 +5,19 @@ import SideBar from '../Dashboard/SideBar/SIdeBar';
 const Review = () => {
     const [review, setReview] = useState({})
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-    console.log("img",loggedInUser);
+
 
     const handleBlur = e => {
         const rewReview = { ...review, img: loggedInUser.img };
         rewReview[e.target.name] = e.target.value;
         setReview(rewReview);
 
-        console.log("loogged in user", rewReview);
     }
 
-    console.log("review", review);
-    const handleReview = () => {
-        fetch('https://morning-thicket-61908.herokuapp.com/addReview', {
+
+    const handleReview = (e) => {
+        console.log("review", review);
+        fetch('http://localhost:5000/addReview', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/Json'

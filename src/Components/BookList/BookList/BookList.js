@@ -12,7 +12,7 @@ const BookList = () => {
     }
 
     useEffect(() => {
-        fetch("https://morning-thicket-61908.herokuapp.com/orders")
+        fetch("http://localhost:5000/orders")
             .then(res => res.json())
             .then(data => {
                 const myOrder = data.filter(orders => orders.email === loggedInUser.email)

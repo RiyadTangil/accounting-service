@@ -14,10 +14,10 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav  className="ms-auto">
-                        <Link  className="px-4 text-light text-decoration-none" to="/home">Home</Link>
+                        <Link  className="px-4 text-light text-decoration-none" to="/">Home</Link>
                         <Link className="px-4 text-light text-decoration-none" to="/dashboard">dashboard</Link>
                         <Link className="px-4 text-light text-decoration-none" to="/about">About us</Link>
-                        <Link className="px-4 text-light text-decoration-none" to="/makeAdmin">Admin</Link>
+                        <Link className="px-4 text-light text-decoration-none" to="/dashboard">Admin</Link>
                     </Nav>
                     <Form style={{ marginRight: "70px" }} inline>
                         {

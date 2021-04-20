@@ -9,7 +9,7 @@ const ServiceDetails = ({ service }) => {
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        fetch('https://morning-thicket-61908.herokuapp.com/isAdmin', {
+        fetch('http://localhost:5000/isAdmin', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ email: loggedInUser.email })
@@ -49,7 +49,7 @@ const ServiceDetails = ({ service }) => {
                 <div onClick={() => set(state => !state)}>
                     {
                         !flipped ? <a.div class="c back" style={{ opacity: opacity.interpolate(o => 1 - o), transform }} >
-                            <div style={{backgroundColor:"white"}}  className=" text-center shadow p-4">
+                            <div style={{backgroundColor:"white", borderRadius:"10px"}}  className=" text-center  shadow p-4">
 
                                 <img style={{ height: '50px' }} src={`data:image/png;base64,${service.image.img}`} alt="" />
                                 <h5 className="my-2 ">{service.name}</h5>

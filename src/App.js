@@ -1,6 +1,7 @@
-import logo from './logo.svg';
+
 import Dashboard from "./Components/Dashboard/Dashboard/Dashboard"
 import Home from "./Components/Home/Home/Home"
+import "./App.css"
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,8 +19,8 @@ import BookList from './Components/BookList/BookList/BookList';
 import Review from './Components/Review/Review';
 import AddAdmin from './Components/AddAdmin/AddAdmin';
 import OrderList from './Components/OrderList/OrderList/OrderList';
-
-
+import ManageService from './Components/ManageService/ManageService/ManageService';
+import OurCapability from './Components/Home/OutCapability/OurCapability';
 export const UserContext = createContext()
 export const UserOrder = createContext()
 
@@ -41,24 +42,30 @@ function App() {
             <PrivetRoute path="/book">
               <Book></Book>
             </PrivetRoute>
-         
+            <Route path="/about">
+              <OurCapability></OurCapability>
+            </Route>
+
             <PrivetRoute path="/review">
-            <Review></Review>
+              <Review></Review>
             </PrivetRoute>
             <Route path="/addService">
               <AddService></AddService>
             </Route>
-            <Route path="/makeAdmin">
-             <AddAdmin></AddAdmin>
+            <Route path="/dashboard">
+              <AddAdmin></AddAdmin>
             </Route>
             <Route path="/bookList">
-          <BookList></BookList>
+              <BookList></BookList>
             </Route>
             <Route path="/orderList">
-        <OrderList></OrderList>
+              <OrderList></OrderList>
             </Route>
-            <Route path="/dashboard">
+            <PrivetRoute path="/dashboard">
               <Dashboard></Dashboard>
+            </PrivetRoute>
+            <Route path="/manageService">
+              <ManageService></ManageService>
             </Route>
           </Switch>
         </Router>

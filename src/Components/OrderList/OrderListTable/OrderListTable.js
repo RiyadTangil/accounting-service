@@ -23,11 +23,11 @@ const OrderListTable = ({ order }) => {
             id: productKey,
             status: status
         };
-        console.log("eventy",eventData);
 
 
 
-        fetch(`https://morning-thicket-61908.herokuapp.com/update/${productKey}`, {
+
+        fetch(`http://localhost:5000/update/${productKey}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(eventData)
@@ -62,7 +62,7 @@ const OrderListTable = ({ order }) => {
                         order.map((order, index) =>
 
                             <tr>
-                                {/* <td>{index + 1}</td> */}
+                                <td>{index + 1}</td>
                                 <td>{order.name}</td>
                                 <td>{order.email}</td>
                                 <td>{order.serviceName}</td>
@@ -89,17 +89,6 @@ const OrderListTable = ({ order }) => {
                 </tbody>
             </table>
 
-
-            {/* <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                       </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                    </ul>
-                </div> */}
 
         </div>
     );
