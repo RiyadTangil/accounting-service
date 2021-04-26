@@ -55,6 +55,10 @@ function App() {
             <Route path="/dashboard">
       <Dashboard></Dashboard>
             </Route>
+            
+            <Route path="/makeAdmin">
+          <AddAdmin></AddAdmin>
+            </Route>
             <Route path="/bookList">
               <BookList></BookList>
             </Route>
