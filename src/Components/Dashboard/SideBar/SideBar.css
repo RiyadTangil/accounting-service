@@ -1,5 +1,5 @@
 .sidebar{
-    background-image: linear-gradient(40deg, #DAAD86,#BC986A);
+    background-image: linear-gradient(180deg,rgb(0, 156, 134),#BC986A);
  
    
 }
@@ -12,4 +12,26 @@
 }
 .sidebar svg{
     margin-right: 5px;
+
 }
+
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    perspective: 1500px;
+    background: #f4f7fc;
+  }
+
+#sidebar {
+    min-width: 300px;
+    max-width: 300px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    background: rgb(112, 106, 106);
+    color: #878787;
+    transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
+    transform-origin: bottom left;
+  }

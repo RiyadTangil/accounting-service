@@ -1,0 +1,22 @@
+.nav-img{
+    border-radius: 50%;
+
+ padding:20px;
+
+   background-color: #fdf3ed;
+}
+.nav-img:hover{
+
+    transition: ease-in-out 0.5s;
+  
+}
+.nav-img{
+transition: ease-in-out 0.5s;
+}
+@media (max-width: 768px) {
+    .service-plane img{
+padding: 0,10px;
+width:100%;
+    }
+}
+

@@ -1,5 +1,5 @@
 .title{
-    border: 5px solid orange;
+    border: 5px solid #009c86;
     display:inline;
     padding: 10px 40px;
     font-weight: bold;
@@ -7,6 +7,3 @@
   
 }
 
-.capability{
-
-}

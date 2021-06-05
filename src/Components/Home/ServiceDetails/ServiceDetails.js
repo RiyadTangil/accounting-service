@@ -3,7 +3,18 @@ import { Link } from 'react-router-dom';
 import { UserContext, UserOrder } from '../../../App';
 import { useSpring, animated as a } from 'react-spring'
 import image from '../../../images/accounts.png'
+import './addService.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
 const ServiceDetails = ({ service }) => {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 2000
+        });
+    }, []);
 
     const [flipped, set] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false);
@@ -36,39 +47,45 @@ const ServiceDetails = ({ service }) => {
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const [order, setOrder] = useContext(UserOrder)
-    const handleOrder = (service) => {
-        setOrder(service);
-
-    }
-
+  
     return (
 
         <div className="col-md-4 col-sm-6">
 
-            <div style={{paddingBottom:"80px"}}>
-                <div onClick={() => set(state => !state)}>
+            <div style={{ paddingBottom: "80px" }}>
+                <div data-aos={"zoom-in-down"}
+                 onMouseEnter={() => set(state => !state)}
+                 onMouseLeave={() => set(state => !state)}
+                 >
                     {
                         !flipped ? <a.div class="c back" style={{ opacity: opacity.interpolate(o => 1 - o), transform }} >
-                            <div style={{backgroundColor:"white", borderRadius:"10px"}}  className=" text-center  shadow p-4">
+                            <div style={{ backgroundColor: "white", borderRadius: "10px",height:"350px" }} className=" text-center  shadow p-4">
 
                                 <img style={{ height: '50px' }} src={`data:image/png;base64,${service.image.img}`} alt="" />
                                 <h5 className="my-2 ">{service.name}</h5>
                                 <h6 className="my-2">${service.price}</h6>
 
-                                <p className="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, quaerat?</p>
+                                <p className="text-secondary">Lorem ipsum dolor Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolorum. sit amet, consectetur adipisicing elit. Aliquam, quaerat?</p>
 
 
-                                <Link to = {isAdmin ? "/dashboard" :  "/book"} >  <button onClick={() => handleOrder(service)} variant="outline-primary">Buy now</button>{' '}</Link>
+                             
 
                             </div>
                         </a.div>
                             :
                             <a.div class="c front" style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }} >
-                                <div className=" text-center shadow p-4">
+                                <div style={{height:"350px",backgroundColor: "rgb(0, 156, 134)"}} className=" text-center rounded-3 shadow p-4">
 
                                     <img style={{ height: '240px' }} src={`data:image/png;base64,${service.image.img}`} alt="" />
 
+                                    <Link to={"/dashboard/book"} >  <button onClick={()=>setOrder(service)} className="btn text-light submitButton">
+                                    Buy now
+                                    <div class="SubmitButton__horizontal"></div>
+                                    <div class="submitButton__vertical"></div>
+                                </button>{' '}</Link>
+
                                 </div>
+                               
                             </a.div>
                     }
 

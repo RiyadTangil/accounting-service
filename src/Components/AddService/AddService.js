@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import SideBar from '../Dashboard/SideBar/SIdeBar';
+
 import { useForm } from "react-hook-form";
+import SideVarNav from '../Dashboard/SidvarNav/SideVarNav';
 const containerStyle = {
     backgroundColor: "#F4FDFB",
     border: '1px solid red'
@@ -26,12 +27,13 @@ const AddService = () => {
     }
 
     const onSubmit = () => {
+
         const formData = new FormData()
         formData.append('file', file);
         formData.append('name', info.name);
         formData.append('description', info.description);
         formData.append('price', info.price);
-        console.log("formData", formData);
+
 
 
         fetch('https://morning-thicket-61908.herokuapp.com/addService', {
@@ -50,18 +52,19 @@ const AddService = () => {
 
 
     return (
-        <section>
-            <div style={containerStyle} className=" container-fluid row">
-                <div className="col-md-2 col-sm-6 col-12">
 
-                    <SideBar></SideBar>
-                </div>
 
-                <div className="col-md-10 col-sm-12 col-12">
-                    <div className="p-5">
+
+
+        <div className="row">
+            <SideVarNav></SideVarNav>
+            <div className="col-md-9 mt-5">
+
+                <div style={{ backgroundColor: "#F4FDFB",marginRight:"20px" }}>
+                    <div className="shadow p-5   d-flex justify-content-center flex-column">
+
                         <h5 className="text-brand">Add a Service</h5>
                         <form onSubmit={onSubmit}>
-                        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
                             <div class="row g-3">
                                 <div class="col">
                                     <label htmlFor="exampleInputEmail1">Service Title</label>
@@ -84,15 +87,17 @@ const AddService = () => {
 
                             </div>
                             <div class="col-12 d-flex justify-content-end mt-2">
-                                < button type="submit"  data-bs-target="#staticBackdrop" className="btn btn-primary">Submit</button>
+                                < button type="submit" data-bs-target="#staticBackdrop" className="btn btn-primary">Submit</button>
                             </div>
                         </form>
 
                     </div>
-
                 </div>
             </div>
-        </section>
+
+        </div>
+
+
     );
 };
 

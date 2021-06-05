@@ -1,3 +1,28 @@
-.carousel-container img{
-    height: 600px;
+
+.section-title{
+  color:rgb(0, 156, 134);
 }
+.hero-img-section{
+  
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+    .img-animation {
+      animation: App-logo-float infinite 3s ease-in-out;
+    }
+  }
+ 
+  
+  @keyframes App-logo-float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(30px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  

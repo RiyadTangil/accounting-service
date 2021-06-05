@@ -15,13 +15,15 @@ const PrivetRoute = ({ children, ...rest }) => {
         const { name, email, picture } = decodedToken;
         const signedInUser = { name: name, email: email, img: picture }
         setLoggedInUser(signedInUser)
-        console.log("Decode", decodedToken);
+     
         // get current time
         const currentTime = new Date().getTime() / 1000;
         // compare the expiration time with the current time
         // will return false if expired and will return true if not expired
         return decodedToken.exp > currentTime;
+      
     }
+ 
 
     return (
         <Route

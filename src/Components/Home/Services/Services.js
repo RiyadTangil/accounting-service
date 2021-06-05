@@ -5,6 +5,7 @@ import financing from "../../../images/calcultor.png"
 import ServiceDetails from '../ServiceDetails/ServiceDetails';
 import { addToDatabaseCart } from '../../../utilities/databaseManager';
 
+
 const serviceData = [
     {
         name: 'Book keeping',
@@ -25,6 +26,7 @@ const serviceData = [
 
 
 const Services = () => {
+
     const[ serviceCollection,setServiceCollection]=useState([])
     useEffect(() => {
         fetch("https://morning-thicket-61908.herokuapp.com/service")
@@ -36,9 +38,11 @@ const Services = () => {
         addToDatabaseCart(id)
     }
     return (
-        <section style={{ backgroundColor: "#DAAD86" }} className="service-container">
+        <section style={{ backgroundColor: "#E3E3E3" }} className="service-container">
             <div className="text-center pt-5">
-                <h5 style={{ color: 'white' }}>OUR SERVICES</h5>
+          
+
+                <h5 class="section-title">OUR SERVICES</h5>
                 <h2>Services We Provide </h2>
             </div>
             <div className="d-flex justify-content-center  align-items-center">

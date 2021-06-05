@@ -49,8 +49,8 @@ const OrderListTable = ({ order }) => {
                 <thead>
                     <tr>
                         <th className="text-secondary text-left" scope="col">Sr No</th>
-                        <th className="text-secondary" scope="col">Name</th>
-                        <th className="text-secondary" scope="col">Email</th>
+                        <th className="text-secondary " scope="col">Name</th>
+                        <th className="text-secondary " scope="col">Email</th>
                         <th className="text-secondary" scope="col">ServiceName</th>
 
                         <th className="text-secondary" scope="col">Pay with</th>
@@ -63,15 +63,15 @@ const OrderListTable = ({ order }) => {
 
                             <tr>
                                 <td>{index + 1}</td>
-                                <td>{order.name}</td>
-                                <td>{order.email}</td>
+                                <td className="">{order.name}</td>
+                                <td className=" ">{order.email}</td>
                                 <td>{order.serviceName}</td>
 
                                 <td>Credit cart</td>
                                 <td onClick={() => handleUpdate(order._id)} >
                                     <div class="btn-group">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                            {order.status}
+                                            {order.status }
                                         </button>
 
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">

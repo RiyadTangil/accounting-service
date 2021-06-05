@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SideBar from '../Dashboard/SideBar/SIdeBar';
+import SideVarNav from '../Dashboard/SidvarNav/SideVarNav';
 
 const AddAdmin = () => {
     const [admin ,setAdmin]=useState(null)
@@ -18,11 +19,15 @@ const AddAdmin = () => {
     }
 
     return (
-        <div className="container-fluid row" >
-            <SideBar></SideBar>
-            <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
+        <div className="row">
+        <SideVarNav></SideVarNav>
+        <div className="col-md-9 mt-5">
 
-                <form onSubmit={handleAdmin} className="w-50 p-5  shadow">
+            <div>
+               
+
+
+                <form   style={{ backgroundColor: "#F4FDFB" }} onSubmit={handleAdmin} className="w-75 p-5  shadow">
                  
                 
                     <div class="row mb-3">
@@ -37,6 +42,8 @@ const AddAdmin = () => {
                 </form>
 
 
+   
+            </div>
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../../App';
 import SideBar from '../Dashboard/SideBar/SIdeBar';
+import SideVarNav from '../Dashboard/SidvarNav/SideVarNav';
 
 const Review = () => {
     const [review, setReview] = useState({})
@@ -37,25 +38,27 @@ const Review = () => {
 
 
     return (
-        <div className="container-fluid row" >
-            <SideBar></SideBar>
-            <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
+        <div className="row">
+        <SideVarNav></SideVarNav>
+        <div className="col-md-9 mt-5">
 
-                {/* <form onSubmit={handleOrder} className="w-50 p-5  shadow"> */}
-                <form onSubmit={handleReview} className="w-50 p-5  shadow">
-                    <div class="row mb-3">
+            <div >
+                <div className=" d-flex justify-content-center     align-items-center  ">
+
+                <form style={{ backgroundColor: "#F4FDFB" }} onSubmit={handleReview} className=" w-75 p-5  shadow">
+                    <div class="row mb-4">
 
                         <div class="col-sm-10">
                             <input type="text" onBlur={handleBlur} placeholder='your name' name='name' class="form-control" id=""></input>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="row mb-4">
 
                         <div class="col-sm-10">
                             <input type="text" name="designation" onBlur={handleBlur} placeholder="Company's name designation" class="form-control" id="inputEmail3"></input>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="row mb-4">
 
                         <div class="col-sm-10">
 
@@ -72,6 +75,8 @@ const Review = () => {
                 </form>
 
 
+            </div>
+            </div>
             </div>
         </div>
     );

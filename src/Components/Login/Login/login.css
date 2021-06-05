@@ -1,0 +1,8 @@
+@media (max-width: 768px){
+    .login-container{
+        width: 80%!important;
+    }
+}
+.login-container{
+    width: 50%;
+ } 

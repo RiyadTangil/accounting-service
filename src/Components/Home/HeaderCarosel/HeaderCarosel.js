@@ -1,54 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import calculator from "../../../images/calcultro.jpg"
 import computor from "../../../images/copmuter.jpg"
+import invoice from "../../../images/accounting-hero.jpg"
 import meeting from "../../../images/meeting.jpg"
 import writing from "../../../images/writing.jpg"
 import './carousel.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowCircleRight, faArrowRight, faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const HeaderCarosel = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 2000
+        });
+    }, []);
     return (
-        <div className="carousel-container">
+        <div className=" hero-container container ">
+            <div className="row ">
+                    <div className="col-md-4 order-2 order-md-1  d-flex  align-items-center justify-content-center">
+                        <div class="text-dark ">
+                            <h3 class='section-title'>Professional accountant</h3>
+                            <h6 class='py-3 text-muted' >Start your dream Of an Accountant today. Conquer the world..</h6>
+                            <div style={{ backgroundColor: "rgb(0, 156, 134)", BorderRadius: "60px", fontSize: "20px " }} className="btn btn-primary text-center lg-w-5 md-w-50">Take a service  <FontAwesomeIcon icon={faArrowCircleRight} /></div>
+                        </div>
+                    </div>
+                    <div data-aos={"zoom-in-down"} className="order-1 order-md-2  col-md-8 hero-img-section">
+                        <img  src={invoice} class=" w-100  img-fluid img-animation" alt="..."></img>
+               
+                </div>
 
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active"  data-bs-interval="2000">
-                        <img src={computor} class="d-block w-100" alt="..."></img>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item"  data-bs-interval="2000">
-                        <img src={meeting} class="d-block w-100" alt="..."></img>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item"  data-bs-interval="2000">
-                        <img src={writing} class="d-block w-100" alt="..."></img>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-
-            
         </div>
     );
 };

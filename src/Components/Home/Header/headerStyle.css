@@ -1,3 +1,17 @@
-.header-container{
-    height:655px;
+
+.hero-img-section img{
+    height:650px;
+    
+}
+.hero-img-section{
+    overflow: hidden !important;
+}
+@media (max-width: 768px) {
+    .hero-img-section img{
+        overflow: hidden !important;
+        height:400px;
+    }
+    .hero-img-section{
+        height:450px;
+    }
 }
