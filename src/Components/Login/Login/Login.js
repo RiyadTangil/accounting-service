@@ -3,12 +3,12 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import firebaseConfig from "./firebase.config";
+import infoEmojis from '../../../images/info-emoji.svg';
 import { useHistory, useLocation } from "react-router";
-// import { connect } from "react-redux";
-// import { setUser } from "../../../redux/actions/Actions";
-// import Header from "../../Header/Header";
+
 import { UserContext } from "../../../App";
 import "./login.css"
+import { Toast } from "react-bootstrap";
 
 
 
@@ -32,6 +32,7 @@ const Login = (props) => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [loginInfo, setLoginInfo] = useState({});
     let [newUser, setNewUser] = useState(false)
+    const [show, setShow] = useState(true);
 
     const handleBlur = (event) => {
 
@@ -39,25 +40,25 @@ const Login = (props) => {
         let newUser = { ...loginInfo }
         newUser[event.target.name] = event.target.value
         setLoginInfo(newUser)
-        console.log('newuser', newUser);
+
 
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("new",loginInfo.email, loginInfo.password);
         if (newUser && loginInfo.password && loginInfo.password === loginInfo.confirmPassword) {
             firebase.auth().createUserWithEmailAndPassword(loginInfo.email, loginInfo.password)
-                .then((res) => {
-                    let newUserInfo = { ...loggedInUser }
+                .then((userCredential) => {
+                    var { displayName, email } = userCredential.user;
+                    let newUserInfo = { name: displayName, email: email }
                     newUserInfo.error = ''
                     newUserInfo.success = true
                     setLoggedInUser(newUserInfo)
                     storeAuthToken();
                     history.replace(from);
-                    //   updateUserName(loggedInUser.name)
+
                 })
                 .catch((error) => {
-                    console.log("fail");
+
                     let newUserInfo = { ...loggedInUser }
                     newUserInfo.error = error.message;
                     newUserInfo.success = false
@@ -67,7 +68,7 @@ const Login = (props) => {
         if (newUser && loginInfo.password !== loginInfo.confirmPassword) {
             let newUserInfo = { ...loggedInUser }
             newUserInfo.error = "pass word not matched";
-            console.log("fail", newUserInfo.error);
+
             setLoggedInUser(newUserInfo)
 
 
@@ -76,9 +77,8 @@ const Login = (props) => {
             firebase.auth().signInWithEmailAndPassword(loginInfo.email, loginInfo.password)
                 .then((userCredential) => {
                     var { displayName, email } = userCredential.user;
-                    let newUserInfo = { Name: displayName, email: email }
+                    let newUserInfo = { name: displayName, email: email }
                     newUserInfo.error = ''
-                    console.log("user", newUserInfo);
                     newUserInfo.success = true
                     setLoggedInUser(newUserInfo)
                     storeAuthToken();
@@ -124,6 +124,9 @@ const Login = (props) => {
     };
 
     return (
+
+
+
         <div className="login-page container ">
 
             <div className="d-flex justify-content-center my-5  ">
@@ -138,13 +141,31 @@ const Login = (props) => {
                             <input class="form-control" type="text" />
 
                         </div>}
+                        <>
+                            <Toast className="toast-right" onClose={() => setShow(false)} show={show} delay={5000} >
+
+
+                                <Toast.Header>
+
+                                    <img src={infoEmojis} className="rounded mr-2" alt="Info" />
+                                    <strong className="mr-auto">Important Info</strong>
+                                </Toast.Header>
+                                <Toast.Body className="text-center">
+                                    Use this email to see all admin features
+                              <br />
+                                    <b>Email: test@gmail.com</b>
+                                    <br/>
+                                    <b>password : 111111</b>
+                                </Toast.Body>
+                            </Toast>
+                        </>
 
                         <div class=" mb-1">
                             <label for="inputemail3" class="col-sm-2 col-form-label">
                                 email
                              </label>
 
-                            <input class="form-control" type="text" required onBlur={handleBlur} placeholder="type your email" name="email" id="" />
+                            <input class="form-control"  type="text" required onBlur={handleBlur} placeholder="type your email" name="email" id="" />
 
                         </div>
                         <div class="mb-1">
@@ -152,7 +173,7 @@ const Login = (props) => {
                                 Password
                             </label>
 
-                            <input class="form-control" id="inputPassword3" type="password" required onBlur={handleBlur} name="password" id="" placeholder="type your password" />
+                            <input class="form-control"  id="inputPassword3" type="password" required onBlur={handleBlur} name="password" id="" placeholder="type your password" />
 
                         </div>
 
@@ -167,20 +188,21 @@ const Login = (props) => {
                         {newUser ? <p style={{ cursor: "pointer" }}>Already have an account ? <span onClick={() => setNewUser(!newUser)} name="newUser" id="newUser" class="text-primary">Log in</span></p>
                             : <p style={{ cursor: "pointer" }}>Are you new user? <span onClick={() => setNewUser(!newUser)} name="newUser" id="newUser" class="text-primary">create account</span></p>
                         }
-                        <div className=" justify-content-center d-flex mb-1">
-                            <button className="w-75" type="submit" variant="primary" size="md" block>
-                                Sign in
-                    </button>
+                        <div className=" justify-content-center  d-flex mb-1">
+                            <button className="w-75 btn main-bg" type="submit" variant="primary" size="md" block>
+                                {newUser ? "sign up" : "Log in"}
+                            </button>
                         </div>
 
                     </form>
-                    <p className="text-warning">{loggedInUser.error }</p>
+                    <p className="text-warning">{loggedInUser.error}</p>
                     <div className="justify-content-center d-flex">
-                        <button className="btn btn-primary" onClick={handleGoogleSignIn}>sign in with google</button>
+                        <button className="btn main-bg" onClick={handleGoogleSignIn}>sign in with google</button>
                     </div>
                 </div>
             </div>
         </div>
+
     );
 };
 

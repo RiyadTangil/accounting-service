@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import SideBar from '../../Dashboard/SideBar/SIdeBar';
+import SideVarNav from '../../Dashboard/SidvarNav/SideVarNav';
+
 import MangesServiceDetails from '../ManageServiceDetails/MangesServiceDetails';
 
 const ManageService = () => {
@@ -19,10 +20,9 @@ const ManageService = () => {
 
 
     return (
-        <div className="container-fluid row" >
-        <SideBar></SideBar>
-        <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
-            <h5 className="text-brand">All Service</h5>
+        <div className="row">
+        <SideVarNav></SideVarNav>
+        <div className="col-md-9 mt-5 ">  <h5 className="text-brand">All Service</h5>
             {
                 <MangesServiceDetails service={serviceList}></MangesServiceDetails>
             }

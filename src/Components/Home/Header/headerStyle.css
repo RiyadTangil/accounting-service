@@ -1,5 +1,6 @@
 
 .hero-img-section img{
+    padding-top: 50px;
     height:650px;
     
 }
@@ -9,7 +10,7 @@
 @media (max-width: 768px) {
     .hero-img-section img{
         overflow: hidden !important;
-        height:400px;
+        height:350px;
     }
     .hero-img-section{
         height:450px;

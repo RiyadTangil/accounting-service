@@ -23,7 +23,8 @@ const HeaderCarosel = () => {
                         <div class="text-dark ">
                             <h3 class='section-title'>Professional accountant</h3>
                             <h6 class='py-3 text-muted' >Start your dream Of an Accountant today. Conquer the world..</h6>
-                            <div style={{ backgroundColor: "rgb(0, 156, 134)", BorderRadius: "60px", fontSize: "20px " }} className="btn btn-primary text-center lg-w-5 md-w-50">Take a service  <FontAwesomeIcon icon={faArrowCircleRight} /></div>
+                            <div style={{ BorderRadius: "60px", fontSize: "20px " }} className="btn  main-bg text-center text-light lg-w-5 md-w-50">
+                                <a href="#service" className="text-light text-decoration-none">Take a service  <FontAwesomeIcon icon={faArrowCircleRight} /></a></div>
                         </div>
                     </div>
                     <div data-aos={"zoom-in-down"} className="order-1 order-md-2  col-md-8 hero-img-section">

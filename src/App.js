@@ -1,5 +1,5 @@
 
-import Dashboard from "./Components/Dashboard/Dashboard/Dashboard"
+
 import Home from "./Components/Home/Home/Home"
 import "./App.css"
 import './style.css';
@@ -13,7 +13,7 @@ import Login from './Components/Login/Login/Login';
 import { createContext, useState } from 'react';
 import PrivetRoute from './Components/Login/PrivetRoute/PrivetRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Toaster } from 'react-hot-toast';
 import AddService from './Components/AddService/AddService';
 import Book from './Components/Book/Book/Book';
 import BookList from './Components/BookList/BookList/BookList';
@@ -37,7 +37,7 @@ function App() {
 
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <UserOrder.Provider value={[order, setOrder]}>
-
+      <Toaster />
         <Router>
           <Switch>
             <Route exact path="/">
@@ -45,6 +45,9 @@ function App() {
             </Route>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/dashboard/manageService">
+         <ManageService></ManageService>
             </Route>
             <Route path="/dashboard/orderList">
               <OrderList></OrderList>
@@ -74,10 +77,6 @@ function App() {
             <Route path="/about">
               <OurCapability></OurCapability>
             </Route>
-
-            {/* <PrivetRoute path="/dashboard/:items">
-              <Dashboard></Dashboard>
-            </PrivetRoute> */}
 
           </Switch>
         </Router>

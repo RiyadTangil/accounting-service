@@ -1,7 +1,7 @@
 import React from 'react';
 
 const BookListDetails = ({ booking }) => {
-    console.log(" booking.image", booking.image);
+  
 
     return (
         <div className="col-md-6 col-sm-12">

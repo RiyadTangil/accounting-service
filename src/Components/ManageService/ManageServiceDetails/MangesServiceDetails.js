@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
-
+import swal from 'sweetalert';
+import toast from 'react-hot-toast';
 const MangesServiceDetails = ({ service }) => {
 
     const handleDelete = (event, id) => {
+        const loading = toast.loading('Please wait...!');
         fetch(`https://morning-thicket-61908.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(result => {
+                toast.dismiss(loading);
                 if (result) {
                     event.target.parentNode.parentNode.style.display = 'none';
+                    return swal("Services deleted ","Services deleted successfully",  "success");
+                 
                 }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+            })
+            .catch(error => {
+                toast.dismiss(loading);
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+         
+                
             })
 
     }

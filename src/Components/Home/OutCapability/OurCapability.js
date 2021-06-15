@@ -30,7 +30,7 @@ const serviceData = [
 
 const OurCapability = () => {
     return (
-        <section className="capability my-5">
+        <section id="aboutUs" className="capability my-5">
             <div className="container">
                 <div className="section-header text-center">
                     <h5 className="  title text-uppercase ">Our Capability</h5>

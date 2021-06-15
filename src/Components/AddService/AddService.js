@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import swal from 'sweetalert';
 
+import toast from 'react-hot-toast';
 import { useForm } from "react-hook-form";
 import SideVarNav from '../Dashboard/SidvarNav/SideVarNav';
 const containerStyle = {
@@ -26,8 +28,9 @@ const AddService = () => {
         setFile(newFile);
     }
 
-    const onSubmit = () => {
-
+    const onSubmit = (e) => {
+        const loading = toast.loading('Please wait...!');
+        e.preventDefault()
         const formData = new FormData()
         formData.append('file', file);
         formData.append('name', info.name);
@@ -42,12 +45,17 @@ const AddService = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                toast.dismiss(loading);
+                if (data) {
+                    return swal("service Added", "service has been added successful.", "success");
+                }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
             .catch(error => {
-                console.error(error)
+                toast.dismiss(loading);
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
-    }
+        }
 
 
 
@@ -60,7 +68,7 @@ const AddService = () => {
             <SideVarNav></SideVarNav>
             <div className="col-md-9 mt-5">
 
-                <div style={{ backgroundColor: "#F4FDFB",marginRight:"20px" }}>
+                <div style={{ backgroundColor: "#F4FDFB", marginRight: "20px" }}>
                     <div className="shadow p-5   d-flex justify-content-center flex-column">
 
                         <h5 className="text-brand">Add a Service</h5>
@@ -87,7 +95,7 @@ const AddService = () => {
 
                             </div>
                             <div class="col-12 d-flex justify-content-end mt-2">
-                                < button type="submit" data-bs-target="#staticBackdrop" className="btn btn-primary">Submit</button>
+                                < button type="submit" data-bs-target="#staticBackdrop" className="btn main-bg">Submit</button>
                             </div>
                         </form>
 

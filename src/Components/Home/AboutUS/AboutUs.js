@@ -7,7 +7,7 @@ import aboutUs from '../../../images/about-us.jpg'
 
 const AboutUs = () => {
     return (
-        <div   class="  row align-items-center justify-content-center bg-light ">
+        <div    class="  row align-items-center justify-content-center bg-light ">
 
             <h5 class='section-title text-center mt-5'>About our service</h5>
             <h3 class="text-center text-muted">How we can satisfy  you</h3>

@@ -20,7 +20,6 @@ const Home = () => {
 
     return (
         <div>
-           
             <Header></Header>
             <AboutUs></AboutUs>
             <Services></Services>

@@ -72,7 +72,7 @@ const Ourservices = () => {
 
 
     return (
-        <section  >
+        <section id="service" >
             <div  style={{backgroundColor:"#fdf3ed",paddingBottom:"100px"}} className="row  justify-content-center  d-flex flex-sm-column flex-md-row
         service-container">
             <h5 className="text-center pt-5 section-title">
@@ -81,9 +81,9 @@ const Ourservices = () => {
             <h1 className="pb-5 text-center">
                 Our popular services
             </h1>
-            <h1></h1>
-                <div className="col-md-2   ">
-                    <div className="   ">
+
+                <div  id={`service-${showService}`}  className="col-md-2   ">
+                    <div >
 
                         <ul class="nav  d-flex  justify-content-center  ">
                             {
@@ -93,9 +93,9 @@ const Ourservices = () => {
                         </ul>
                     </div>
                 </div>
-                <div style={{ backgroundColor: "#fdf3ed" }}  className="col-md-10  p-0 ">
+                <div data-aos={"zoom-in-down"} style={{ backgroundColor: "#fdf3ed" }}  className="col-md-10  p-0 ">
                    
-                        <div  data-aos={"zoom-in-down"} id={`service-${showService}`} class="card mb-3">
+                        <div   class="card mb-3">
                             <div class="row d-flex  g-0">
                                 <div  class="col-md-8 service-plane">
                                     <img width="700px" height="550px" src={serviceData[showService].images} alt="..."></img>

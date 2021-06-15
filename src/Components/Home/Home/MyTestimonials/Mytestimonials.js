@@ -14,7 +14,7 @@ const MyTestimonials = () => {
     }, [])
 
     return (
-        <div style={{ height: "600px" }} className=" review-container bg-dark d-flex row  align-items-center justify-content-center pl-3">
+        <div id="review" style={{ height: "600px" }} className=" review-container bg-dark d-flex row  align-items-center justify-content-center pl-3">
            <div class="text-center ">
            <h5 className="section-title">Testimonial</h5>
             <h3 className=" text-light">Client opinions about us</h3>

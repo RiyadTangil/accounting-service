@@ -17,8 +17,8 @@ const Profile = () => {
                             <div className="col-md-6 col-sm-12">
                                 <div class="card text-center ">
                                     <h1 class="text-muted bg-light">Profile</h1>
-                                    <div class="text-center circle-rounded ">
-                                        <img style={{ width: "150px" }} src={loggedInUser.img ||man} class="   card-img-top" alt="..."></img>
+                                    <div style={{borderRadius:"50%"}} class="text-center ">
+                                        <img style={{ width: "150px" ,borderRadius:"50%"}} src={loggedInUser.img ||man} class="   card-img-top" alt="..."></img>
                                     </div>
                                     <div class="card-body ">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

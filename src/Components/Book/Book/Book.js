@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext, UserOrder } from '../../../App';
+import { Toast } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import PaymentProcess from '../../PaymentProcess/PaymentProcess';
-import { Link } from 'react-router-dom';
-import Dashboard from '../../Dashboard/Dashboard/Dashboard';
+import infoEmojis from '../../../images/info-emoji.svg';
 import SideVarNav from '../../Dashboard/SidvarNav/SideVarNav';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import SimpleCardForm from '../../PaymentProcess/SimpleCardForm';
 
 const Book = () => {
     const [order, setOrder] = useContext(UserOrder)
+    const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+    const [show, setShow] = useState(true);
     const [paymentId, setPaymentId] = useState(null)
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -16,34 +20,6 @@ const Book = () => {
         setPaymentId(id)
         setShowPaymentBTn(true)
     }
-    console.log(paymentId);
-
-
-    const handleOrder = () => {
-
-        const orderInfo = {
-            ...loggedInUser,
-            orderTime: new Date(),
-            "serviceName": order.name,
-            "price": order.price,
-            "description": order.description,
-            "image": order.image,
-            "status": "pending",
-            "paymentId": paymentId
-        }
-        fetch("https://morning-thicket-61908.herokuapp.com/addOrder", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/Json'
-            },
-            body: JSON.stringify(orderInfo)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
-
-        setShowPaymentBTn(false)
-    }
-
 
 
     return (
@@ -52,56 +28,45 @@ const Book = () => {
             <SideVarNav></SideVarNav>
             <div className="col-md-9 mt-5 ">
 
-            <div style={{ backgroundColor: "#F4FDFB" }} className="shadow pt-5 px-5">
-                <div className=" d-flex   justify-content-center  flex-column">
+                <div style={{ backgroundColor: "#F4FDFB" }} className="shadow pt-5 px-5">
+                    <div className=" d-flex   justify-content-center  flex-column">
 
-              
+                        <>
+                            <Toast className="toast-right" onClose={() => setShow(false)} show={show} delay={5000} autohide>
+                         
 
-                        <form   onSubmit={handleSubmit(handleOrder)} className="w-75 p-3  ">
-                            <div class="row mb-3">
-                                <label for="inputPassword3" name='name' class="col-sm-2 col-form-label">your name</label>
-                                <div class="col-sm-10">
-                                    <input type="text" defaultValue={loggedInUser.name} class="form-control" id=""></input>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" name="email" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" defaultValue={loggedInUser.email} class="form-control" id="inputEmail3"></input>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputPassword3" name="service" class="col-sm-2 col-form-label">your service</label>
-                                <div class="col-sm-10">
-                                    <input type="text" defaultValue={order.name} class="form-control" id=""></input>
-                                </div>
-                            </div>
+                                <Toast.Header>
+                                  
+                                    <img src={infoEmojis} className="rounded mr-2" alt="Info" />
+                                    <strong className="mr-auto">Important Info</strong>
+                                </Toast.Header>
+                                <Toast.Body className="text-center">
+                                    Use this Card Number to test the payment
+                            <br />
+                                    <b>4242 4242 4242 4242</b>
+                                </Toast.Body>
+                            </Toast>
 
-                            <div className="row ">
+                        </>
 
-                            </div>
-                            {showPaymentBtn &&
-                                <div className="d-flex justify-content-between ">
-                                    <p>your service charge wil be <strong> ${order.price}</strong></p>
-                                    <Link to={"/home"}>    <button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"> Order now</button></Link>
-                                </div>
-                            }
+                    
 
-                        </form>
+                        <Elements stripe={stripePromise}>
+                            <SimpleCardForm order={order}></SimpleCardForm>
+                        </Elements>
+
+
+                       
+
+                       
                     </div>
-                    {!showPaymentBtn &&
-                        <div className="d-flex justify-content-start align-items-center">
-                            <div className="row w-50 p-5">
-                                <PaymentProcess handlePayment={handlePayment} ></PaymentProcess>
-                            </div>
-                        </div>}
 
 
                 </div>
 
 
             </div>
-        </div>
+        </div >
 
     );
 };

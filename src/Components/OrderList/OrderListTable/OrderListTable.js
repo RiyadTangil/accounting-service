@@ -3,45 +3,12 @@ import { Form, Button, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 
-const OrderListTable = ({ order }) => {
-
-    const { register, handleSubmit, watch, errors } = useForm();
-
-    const [show, setShow] = useState(false)
-    const [productKey, setProductKey] = useState([])
-
-    const handleUpdate = (id) => {
-        console.log(id);
-        setProductKey(id);
-
-    }
-
-
-    const onSubmit = (status) => {
-
-        let eventData = {
-            id: productKey,
-            status: status
-        };
+const OrderListTable = ({ order, updateOrderStatus }) => {
 
 
 
 
-        fetch(`https://morning-thicket-61908.herokuapp.com/update/${productKey}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(eventData)
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result) {
 
-                    console.log({ result });
-
-                }
-            })
-        setShow(false)
-    }
 
     return (
         <div>
@@ -68,20 +35,30 @@ const OrderListTable = ({ order }) => {
                                 <td>{order.serviceName}</td>
 
                                 <td>Credit cart</td>
-                                <td onClick={() => handleUpdate(order._id)} >
+                                <td>
+                                    <select
+                                        className={order.status === "Pending" ? "btn btn-danger" : order.status === "Done" ? "btn btn-success" : "btn btn-info"}
+                                        defaultValue={order.status}
+                                        onChange={e => updateOrderStatus(e.target.value, order._id)}>
+                                        <option className="bg-white text-muted">Pending</option>
+                                        <option className="bg-white text-muted">On going</option>
+                                        <option className="bg-white text-muted">Done</option>
+                                    </select>
+                                </td>
+                                {/* <td  >
                                     <div class="btn-group">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                            {order.status }
+                                            {order.status}
                                         </button>
 
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li onClick={() => onSubmit('Pending')} ><a class="dropdown-item" href="#">Pending</a></li>
-                                            <li onClick={() => onSubmit('OnGoing')}><a class="dropdown-item" href="#">OnGoing</a></li>
-                                            <li onClick={() => onSubmit('Done')}><a class="dropdown-item" href="#">Done </a></li>
+                                            <li onClick={() => updateOrderStatus('Pending', order._id)} ><a class="dropdown-item" href="#">Pending</a></li>
+                                            <li onClick={() => updateOrderStatus('OnGoing', order._id)}><a class="dropdown-item" href="#">OnGoing</a></li>
+                                            <li onClick={() => updateOrderStatus('Done', order._id)}><a class="dropdown-item" href="#">Done </a></li>
                                         </ul>
                                     </div>
 
-                                </td>
+                                </td> */}
 
                             </tr>
                         )

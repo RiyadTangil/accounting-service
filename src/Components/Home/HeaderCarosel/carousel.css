@@ -2,11 +2,10 @@
 .section-title{
   color:rgb(0, 156, 134);
 }
-.hero-img-section{
-  
+.main-bg{
+  background-color:rgb(0, 156, 134)!important;
+  color: aliceblue!important;
 }
-
-
 @media (prefers-reduced-motion: no-preference) {
     .img-animation {
       animation: App-logo-float infinite 3s ease-in-out;
