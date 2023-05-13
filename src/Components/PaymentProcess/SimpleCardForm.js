@@ -63,7 +63,7 @@ console.log(loggedInUser,paymentMethod.id);
       "status": "pending",
       "paymentId": paymentMethod.id
     }
-    axios.post("https://morning-thicket-61908.herokuapp.com/addOrder", orderInfo)
+    axios.post("https://accountingservice.vercel.app/addOrder", orderInfo)
       .then(res => {
         toast.dismiss(loading);
         if (res.data) {

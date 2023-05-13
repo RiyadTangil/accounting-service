@@ -5,7 +5,7 @@ const MangesServiceDetails = ({ service }) => {
 
     const handleDelete = (event, id) => {
         const loading = toast.loading('Please wait...!');
-        fetch(`https://morning-thicket-61908.herokuapp.com/delete/${id}`, {
+        fetch(`https://accountingservice.vercel.app/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

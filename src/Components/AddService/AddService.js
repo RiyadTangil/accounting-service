@@ -39,7 +39,7 @@ const AddService = () => {
 
 
 
-        fetch('https://morning-thicket-61908.herokuapp.com/addService', {
+        fetch('https://accountingservice.vercel.app/addService', {
             method: 'POST',
             body: formData
         })

@@ -19,7 +19,7 @@ const Home = () => {
    
 
     return (
-        <div>
+        <div style={{overflow:"hidden"}}>
             <Header></Header>
             <AboutUs></AboutUs>
             <Services></Services>

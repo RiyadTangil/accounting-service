@@ -12,7 +12,7 @@ const ManageService = () => {
     }
 
     useEffect(() => {
-        fetch("https://morning-thicket-61908.herokuapp.com/service")
+        fetch("https://accountingservice.vercel.app/service")
             .then(res => res.json())
             .then(data => setServiceList(data))
     }, [])
